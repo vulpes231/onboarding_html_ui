@@ -1,0 +1,240 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.qs_app_modal_body {
+    overflow: hidden; /* Hide overflow */
+    overflow-y: auto; /* Enable scrolling for body */
+    flex-grow: 1; /* Allow body to fill the space */
+    padding: 10px;
+    margin-top: 25px; /* Adjust this value to the height of the header */
+    margin-bottom: 25px; /* Adjust this value to the height of the footer */
+}
+
+.qs_app_modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Ensures scrollbar for the entire modal if needed */
+    background-color: rgba(0,0,0,0.4);
+}
+
+.qs_app_modal_content {
+    display: flex;
+    flex-direction: column;
+    height: 80vh; /* Full viewport height */
+    max-height: 90vh; /* 90% of the viewport height */
+    /*overflow: hidden; !* Hide overflow *!*/
+    /*overflow-y: auto; !* Scrollbar for content if needed *!*/
+    background-color: #fefefe;
+    padding: 0px;
+    border: 2px solid #666; /* Added border */
+    width: 60%; /* Adjust width as needed */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+    /* Centering the modal content vertically */
+    position: relative;
+    margin: 2% auto; /* Adjust top margin for some spacing */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Header */
+.qs_app_modal_header {
+    position: fixed;
+    top: 0; /* Align with the top of the modal */
+    z-index: 100; /* Higher than the content */
+    width: 100%; /* Match the width of the modal content */
+    background: inherit; /* Optional: To match the modal background */
+    /*height: 40px;*/
+}
+
+/* Footer */
+.qs_app_modal_footer {
+    position: fixed;
+    bottom: 10px; /* Align with the bottom of the modal */
+    z-index: 100; /* Higher than the content */
+    width: 100%;
+    /*height: 40px;*/
+    background: inherit; /* Optional: To match the modal background */
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.qs_app_skip_button {
+    background-color: #d6d6d6; /* Light gray */
+    /*color: black; !* Black text for better contrast *!*/
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    margin-right: 10px;
+    float: left;
+}
+
+.qs_app_skip_button:hover {
+    opacity: 1;
+    background-color: #bfbfbf; /* Slightly darker gray on hover */
+}
+
+.qs_app_centered_buttons {
+    text-align: center;
+    flex-grow: 1; /* Allow this div to grow and take available space */
+}
+
+.qs_app_step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+}
+
+.qs_app_step.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#qs_app_prev_btn, #qs_app_next_btn {
+    background-color: transparent; /* Adjust as needed */
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid white; /* Optional: add border */
+    cursor: pointer;
+    opacity: 0.9;
+    margin: 0 5px;
+}
+
+#qs_app_prev_btn:hover, #qs_app_next_btn:hover {
+    opacity: 1;
+}
+#qs_app_prev_btn, #qs_app_next_btn {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    margin: 0 5px;
+}
+
+#qs_app_prev_btn:hover, #qs_app_next_btn:hover {
+    opacity: 1;
+    background-color: #0056b3; /* A darker shade of blue for hover */
+}
+
+/*Step nav*/
+.qs_app_steps_nav {
+    text-align: center;
+    margin: 5px 5px;
+    background-color: transparent; /* Set background to transparent */
+    text-align: center;
+    margin: 5px 5px;
+    position: sticky;
+}
+
+.qs_app_step_nav {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: transparent; /* No background color by default */
+    cursor: pointer;
+}
+
+.qs_app_step_nav.active {
+    /*font-weight: bold;*/
+    background-color: #f8f9fc; /* Distinct background for active step */
+    border: 1px solid #666;
+    color: #000;
+}
+
+/*mobile stuff*/
+@media screen and (max-width: 600px) {
+    .qs_app_modal_header {
+        width: 100%; /* Full width */
+        margin: 0; /* Remove any default margin */
+        padding: 10px 20px; /* Adjust padding as needed */
+        box-sizing: border-box; /* Include padding in the width */
+    }
+
+    .qs_app_modal_content {
+        border: 0;
+        width: 100%; /* Adjust width for mobile */
+        margin-top: 5%; /* Adjust top margin for vertical centering */
+        /* Other adjustments for the modal content */
+        padding: 0; /* Adjust padding as needed */
+        box-sizing: border-box; /* Include padding and border in the width */
+        text-align: center;
+    }
+
+    .qs_app_modal {
+        /* Adjust the position and size for mobile */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        /* Other positioning adjustments if needed */
+    }
+
+    .qs_app_navigation_buttons button {
+        display: block; /* Stack buttons */
+        width: 100%; /* Full width for buttons */
+        margin-top: 10px; /* Space between buttons */
+    }
+
+    .qs_app_step {
+        width: 100%;
+    }
+
+    /* Let's hide steps on mobile to have more space */
+    .qs_app_steps_nav {
+        display: none;
+    }
+
+    .qs_app_steps_nav00 {
+        text-align: center;
+        width: 100%;
+        padding: 0;
+        margin-top: 75px;
+    }
+
+    .qs_app_step_nav {
+        display: inline-block;
+        width: 90%; /* Almost full width */
+        margin: 5px auto; /* Centering with auto margin */
+        text-align: center;
+    }
+
+    #qs_app_prev_btn, #qs_app_next_btn {
+        display: block; /* Stack buttons */
+        width: 100%; /* Full width for buttons */
+        margin-top: 10px; /* Space between buttons */
+    }
+}
+
+.qs_app_video_wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.qs_app_video_wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
