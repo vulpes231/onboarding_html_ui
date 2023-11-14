@@ -28,22 +28,33 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   animation-name: animatetop;
   animation-duration: 0.4s;
+  border-radius: 5px;
 }
 
 /* Header */
 .qs_app_modal_header {
   display: none;
+  /* background-color: red; */
+  padding: 1rem;
+  height: 15%;
 }
 
 /* body */
 .qs_app_modal_body {
   overflow-y: scroll;
+  background-color: #f3f3f3;
+  padding: 1rem;
+  height: 70%;
 }
 
 /* Footer */
 .qs_app_modal_footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  /* background-color: red; */
+  justify-content: center;
+  padding: 1rem;
+  /* height: 15%; */
 }
 
 /* responsiveness */
@@ -98,12 +109,13 @@ body {
 .qs_app_step {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
-  visibility: hidden;
+  display: none;
 }
 
 .qs_app_step.active {
   opacity: 1;
-  visibility: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 #qs_app_prev_btn,
